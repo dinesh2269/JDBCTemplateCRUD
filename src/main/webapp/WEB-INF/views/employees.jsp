@@ -123,44 +123,27 @@ button:hover {
 		            <td>
 		                <!-- <button class="edit-btn" onclick="editfun(<%=e.getEmployee_id()%>)">Edit</button>
 		                	<button class="delete-btn" onclick="deletefun(<%=e.getEmployee_id()%>)">Delete</button> -->
-		                 <button class="edit-btn" data-id="<%=e.getEmployee_id()%>">Edit</button>
-		                <button class="delete-btn" data-id="<%=e.getEmployee_id()%>">Delete</button>
+		                 <a href="edit?id=<%=e.getEmployee_id() %>"><button class="edit-btn" data-id="<%=e.getEmployee_id()%>">Edit</button></a>
+		                 <button class="delete-btn" data-id="<%=e.getEmployee_id()%>">Delete</button>
 		            </td>
 		            </tr>
 		            <%} %>
-                <!-- Employee details will be dynamically populated here -->
             </tbody>
         </table>
-        <button id="add-employee-btn">Add New Employee</button>
+       <a href="addEmployee" style="text-decoration:none"><button id="add-employee-btn">Add New Employee</button></a>
     </div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-    $('.edit-btn').on('click',()=>{
-    	console.log('dfs');
-    	var id=$(this).parent().attr(data-id).val();
-    	console.log(id);
-    });
-    /* $.ajax({
+    $('.delete-btn').on('click', function() {
+        var id = $(this).data('id');
+		$.ajax({
 			url:'delete?id='+id,
-			method:'delete',
-			data:{id:id},
-			success:(response)=>{
-			}
+			method:'delete'
 		});
-		function deletefun(id){
-			console.log(typeof(id));
-			$.ajax({
-				url:'delete?id='+id,
-				method:'delete',
-				data:{id:id},
-				success:(response)=>{
-					
-					
-				}
-			});
-		}
-		*/
+		$(this).parent().parent().remove();
+    });
+    
 	</script>
 </body>
 </html>
