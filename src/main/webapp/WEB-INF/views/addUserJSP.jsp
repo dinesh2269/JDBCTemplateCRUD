@@ -99,6 +99,7 @@ button:hover {
                 <label for="department">Department:</label>
                 <input type="text" id="department" name="department">
             </div>
+            
             <div class="form-group">
                 <label for="salary">Salary:</label>
                 <input type="number" id="salary" name="salary" step="0.01">
